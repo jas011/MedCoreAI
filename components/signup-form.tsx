@@ -59,7 +59,7 @@ export function SignupForm({
         email,
         password,
         redirect: true,
-        callbackUrl: "/dashboard",
+        callbackUrl: "/onboarding",
       });
     } catch (err) {
       setError("Network error");

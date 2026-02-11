@@ -3,10 +3,11 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
 import { prismaUser as prisma } from "@/lib/prisma/client";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { Adapter } from "next-auth/adapters";
 
 export const authOptions: AuthOptions = {
-  // ❌ NO ADAPTER (important for MongoDB)
-
+  adapter: PrismaAdapter(prisma as any) as Adapter,
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -44,6 +45,10 @@ export const authOptions: AuthOptions = {
         };
       },
     }),
+    GoogleProvider({
+      clientId: process.env.ClientId!,
+      clientSecret: process.env.ClientSecret!,
+    }),
   ],
 
   session: {
@@ -51,7 +56,41 @@ export const authOptions: AuthOptions = {
   },
 
   callbacks: {
+    //   async signIn({ user, account }) {
+    //   if (account?.provider === "google") {
+    //     const existingUser = await prisma.user.findUnique({
+    //       where: { email: user.email! },
+    //       include: { accounts: true },
+    //     })
+
+    //     if (!existingUser) return false
+
+    //     const alreadyLinked = existingUser.accounts.some(
+    //       (acc) => acc.provider === "google"
+    //     )
+
+    //     if (!alreadyLinked) {
+    //       await prisma.account.create({
+    //         data: {
+    //           userId: existingUser.id,
+    //           type: "oauth",
+    //           provider: "google",
+    //           providerAccountId: account.providerAccountId!,
+    //           access_token: account.access_token,
+    //           refresh_token: account.refresh_token,
+    //           expires_at: account.expires_at,
+    //           token_type: account.token_type,
+    //           scope: account.scope,
+    //           id_token: account.id_token,
+    //         },
+    //       })
+    //     }
+    //   }
+
+    //   return true
+    // },
     async jwt({ token, user }) {
+      console.log({ token, user });
       // Runs on sign-in
       if (user) {
         token.id = user.id;
@@ -75,7 +114,6 @@ export const authOptions: AuthOptions = {
   },
 
   secret: process.env.NEXTAUTH_SECRET,
-  debug: process.env.NODE_ENV === "development",
 };
 
 const handler = NextAuth(authOptions);

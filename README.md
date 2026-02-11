@@ -18,7 +18,9 @@ for database
 
 ```
 env -> DATABASE_URL="mongodb://localhost:27017/medUser"
-cmd -> "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --dbpath "C:\data\db" --replSet rs0
+docker ->
+1. open docker folder in docker terminal (recomended) or any teminal
+2. run command ->  docker-compose up -d
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

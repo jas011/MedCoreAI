@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const LINKS = [
   { label: "Home", href: "/" },
@@ -18,6 +19,7 @@ const LINKS = [
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
@@ -41,10 +43,16 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Button className="shadow-none rounded-md" variant={"outline"}>
+          <Button
+            className="shadow-none rounded-md"
+            variant={"outline"}
+            onClick={() => router.push("/login")}
+          >
             Sign in
           </Button>
-          <Button className=" ">Get Started</Button>
+          <Button className=" " onClick={() => router.push("/signup")}>
+            Get Started
+          </Button>
         </div>
 
         {/* Mobile menu (Popover) */}
@@ -96,7 +104,12 @@ export function Navbar() {
                   >
                     Sign in
                   </Button>
-                  <Button className="w-full">Get Started</Button>
+                  <Button
+                    className="w-full"
+                    onClick={() => router.push("/signup")}
+                  >
+                    Get Started
+                  </Button>
                 </div>
               </div>
             </PopoverContent>

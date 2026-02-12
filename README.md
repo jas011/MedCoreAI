@@ -17,7 +17,7 @@ bun dev
 for database
 
 ```
-env -> DATABASE_URL="mongodb://localhost:27017/medUser"
+env -> DATABASE_URL="postgresql://prisma_user@localhost:5432/medUser?schema=public"
 docker ->
 1. open docker folder in docker terminal (recomended) or any teminal
 2. run command ->  docker-compose up -d

@@ -1,3 +1,4 @@
+"use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +21,7 @@ import { Process1 } from "@/components/process1";
 import { Separator } from "@/components/ui/separator";
 import { InView } from "@/components/ui/in-view";
 import { Navbar } from "../../components/navbar";
+import { useRouter } from "next/navigation";
 
 const faqs = [
   {
@@ -113,6 +115,7 @@ const features = [
 ];
 
 export default function Page() {
+  const router = useRouter();
   return (
     <main>
       <section className="navbar p-3.5 w-full ">
@@ -128,7 +131,10 @@ export default function Page() {
           symptoms, medical reports, and possible next steps — without avatars,
           simulations, or exaggerated claims.
         </div>
-        <Button className="w-fit mt-2 px-6">
+        <Button
+          className="w-fit mt-2 px-6"
+          onClick={() => router.push("/signup")}
+        >
           Get Started <ArrowRight />
         </Button>
       </section>
@@ -205,7 +211,11 @@ export default function Page() {
         <div className="text-lg text-muted-foreground font-semibold text-center md:max-w-[45vw]">
           Start a conversation. Understand better. Decide responsibly.
         </div>
-        <Button className="w-fit mt-2 px-6" variant={"secondary"}>
+        <Button
+          className="w-fit mt-2 px-6"
+          variant={"secondary"}
+          onClick={() => router.push("/signup")}
+        >
           Get Started <ArrowRight />
         </Button>
       </section>

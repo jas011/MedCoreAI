@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 export default function Philosophy() {
   return (
     <motion.div
-      style={{ fontFamily: "__nextjs-Geist Mono" }}
       className="min-h-screen px-4 py-8 md:px-64 mt-20 md:py-16 flex items-center justify-center"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
@@ -13,28 +12,18 @@ export default function Philosophy() {
     >
       <div className="max-w-3xl">
         {/* TITLE */}
-        <h1
-          className="mb-6 text-4xl font-bold"
-          style={{ fontFamily: "AdvercaseRegular" }}
-        >
-          🧭 Philosophy
-        </h1>
+        <h1 className="mb-6 text-4xl font-bold">🧭 Philosophy</h1>
 
         <p className="mb-10 text-lg text-neutral-700">
           This project is built on a simple belief: <br />
-          <strong>
+          <span className="font-bold">
             medical AI should explain, not decide — and assist, not replace.
-          </strong>
+          </span>
         </p>
 
         {/* CORE BELIEF */}
         <section className="mb-10">
-          <h2
-            className="mb-3 text-2xl font-semibold"
-            style={{ fontFamily: "SF Pro Text" }}
-          >
-            🧠 Core belief
-          </h2>
+          <h2 className="mb-3 text-2xl font-semibold">🧠 Core belief</h2>
           <p className="text-neutral-700">
             Healthcare is complex, contextual, and deeply human. Software should
             support understanding — not simulate authority.
@@ -47,10 +36,7 @@ export default function Philosophy() {
 
         {/* WHAT THE SYSTEM DOES */}
         <section className="mb-10">
-          <h2
-            className="mb-3 text-2xl font-semibold"
-            style={{ fontFamily: "SF Pro Text" }}
-          >
+          <h2 className="mb-3 text-2xl font-semibold">
             🧩 What the system does
           </h2>
           <ul className="list-disc list-inside space-y-2 text-neutral-700">
@@ -63,10 +49,7 @@ export default function Philosophy() {
 
         {/* WHAT IT DOES NOT DO */}
         <section className="mb-10">
-          <h2
-            className="mb-3 text-2xl font-semibold"
-            style={{ fontFamily: "SF Pro Text" }}
-          >
+          <h2 className="mb-3 text-2xl font-semibold">
             ⚠️ What it does not do
           </h2>
           <ul className="list-disc list-inside space-y-2 text-neutral-700">
@@ -79,10 +62,7 @@ export default function Philosophy() {
 
         {/* SAFETY & RESPONSIBILITY */}
         <section className="mb-10">
-          <h2
-            className="mb-3 text-2xl font-semibold"
-            style={{ fontFamily: "SF Pro Text" }}
-          >
+          <h2 className="mb-3 text-2xl font-semibold">
             🛡️ Safety & responsibility
           </h2>
           <p className="text-neutral-700">
@@ -98,12 +78,7 @@ export default function Philosophy() {
 
         {/* BETA STATEMENT */}
         <section className="mb-10">
-          <h2
-            className="mb-3 text-2xl font-semibold"
-            style={{ fontFamily: "SF Pro Text" }}
-          >
-            🧪 Beta mindset
-          </h2>
+          <h2 className="mb-3 text-2xl font-semibold">🧪 Beta mindset</h2>
           <p className="text-neutral-700">
             This is an early-stage system. Its purpose is learning — about user
             behavior, system limits, and responsible AI design in healthcare.

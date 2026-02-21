@@ -4,12 +4,19 @@ import PasswordResetScreen from "./components/password-reset";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import axios from "axios";
 
 type VerifyState = "active" | "expired" | "invalid";
 
-export default function ResetPage() {
+export default function Page() {
+  return (
+    <Suspense fallback={"loading..."}>
+      <Reset />
+    </Suspense>
+  );
+}
+function Reset() {
   const params = useSearchParams();
   const [isLoading, setLoading] = useState<boolean>(true);
   const [ValidState, setValidState] = useState<VerifyState>("invalid");

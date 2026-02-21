@@ -58,6 +58,7 @@ export function SignupForm({
       await signIn("credentials", {
         email,
         password,
+        emailVerified: false,
         redirect: true,
         callbackUrl: "/onboarding",
       });
